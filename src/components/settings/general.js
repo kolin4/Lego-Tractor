@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { UPDATE_GENERAL_SETTINGS_SAGA } from '../../actions'
 
-/* eslint-disasble */
 const Container = styled.div`
   padding: 1rem;
 `
@@ -46,8 +45,7 @@ const General = ({ gearbox, movement, updateGeneral }) => (
                 component="input"
                 value="simple"
               />
-              {' '}
-Simple
+              Simple
             </label>
             <label>
               <Field
@@ -56,8 +54,7 @@ Simple
                 component="input"
                 value="semi"
               />
-              {' '}
-Semi - N/A
+              Semi - N/A
             </label>
             <label>
               <Field
@@ -66,12 +63,11 @@ Semi - N/A
                 component="input"
                 value="full"
               />
-              {' '}
-Full - N/A
+              Full - N/A
             </label>
           </RadioBox>
           <RadioBox>
-          Gearbox
+              Gearbox
             <label>
               <Field
                 type="radio"
@@ -79,8 +75,7 @@ Full - N/A
                 component="input"
                 value="auto"
               />
-              {' '}
-Automatic
+              Automatic
             </label>
             <label>
               <Field
@@ -89,8 +84,7 @@ Automatic
                 component="input"
                 value="manual"
               />
-              {' '}
-Manual - N/A
+              Manual - N/A
             </label>
           </RadioBox>
           <ButtonBox>

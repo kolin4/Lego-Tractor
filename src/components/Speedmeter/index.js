@@ -11,18 +11,9 @@ const Container = styled.div`
 `
 const Speedmeter = ({ position }) => (
   <Container>
-    <p>
-Position x =
-      {' '}
-      {position.x}
-    </p>
+    <p>Position x ={position.x}</p>
     <br />
-    <p>
-      {' '}
-Position y =
-      {' '}
-      {position.y}
-    </p>
+    <p>Position y ={position.y}</p>
   </Container>
 )
 

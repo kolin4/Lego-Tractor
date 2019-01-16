@@ -9,7 +9,6 @@ const NavBar = styled.div`
     height: 10vh;
     background-color: lightblue;
 
-
     a {
         padding: 0 1rem;
         text-decoration: none;

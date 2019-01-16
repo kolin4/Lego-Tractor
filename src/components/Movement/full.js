@@ -1,5 +1,6 @@
 import React from 'react'
 /* eslint-disable react/destructuring-assignment */
+
 class Full extends React.Component {
   componentDidMount() {
     window.addEventListener('deviceorientation', (ev) => {
