@@ -1,4 +1,5 @@
-import { takeLatest, put } from 'redux-saga/effects'
+import { takeLatest, put, call } from 'redux-saga/effects'
+import apiCall from '../Utils/apiCall'
 import {
   SWITCH_ASIDE_SAGA,
   SWITCH_ASIDE,
@@ -17,7 +18,14 @@ export function* watchSwitchMenu() {
 }
 
 function* switchNormalLights() {
-  yield put({ type: SWITCH_NORMAL_LIGHTS })
+  try {
+    yield apiCall('/api/settings/normalLights','POST')
+    
+    yield put({ type: SWITCH_NORMAL_LIGHTS })
+  }
+  catch(err) {
+    console.log(err)
+  }
 }
 
 export function* watchSwitchNormalLights() {
@@ -25,7 +33,14 @@ export function* watchSwitchNormalLights() {
 }
 
 function* switchLongLights() {
-  yield put({ type: SWITCH_LONG_LIGHTS })
+  try {
+    yield apiCall('/api/settings/longLights','POST')
+    
+    yield put({ type: SWITCH_LONG_LIGHTS })
+  }
+  catch(err) {
+    console.log(err)
+  }
 }
 
 export function* watchSwitchLongLights() {

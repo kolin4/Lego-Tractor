@@ -6,7 +6,7 @@ class Full extends React.Component {
     window.addEventListener('deviceorientation', (ev) => {
       const { beta } = ev
       const position = {
-        x: beta.toFixed(),
+        x: Number(beta.toFixed()),
       }
       if (beta.toFixed() > 100) {
         position.x = 180 - beta.toFixed()
