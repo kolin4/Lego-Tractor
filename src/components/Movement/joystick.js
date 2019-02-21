@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactNipple from 'react-nipple';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const JoyContainer = styled.div`
     display: flex;
@@ -14,7 +14,7 @@ const JoyContainer = styled.div`
     .front {
         background-color:red !important;
     }
-`
+`;
 
 class Joystick extends React.Component {
     state = {
@@ -37,12 +37,12 @@ class Joystick extends React.Component {
     /* eslint-enable */
 
     handleStartPosition = ({ position }) => {
-      const x = position.x.toFixed()
-      const y = position.y.toFixed()
+      const x = position.x.toFixed();
+      const y = position.y.toFixed();
       this.setState({
         x,
         y,
-      })
+      });
     }
 
     render() {
@@ -68,4 +68,4 @@ class Joystick extends React.Component {
     }
 }
 
-export default Joystick
+export default Joystick;

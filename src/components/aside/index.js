@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import { connect } from 'react-redux'
-import { SWITCH_ASIDE_SAGA, SWITCH_NORMAL_LIGHTS_SAGA, SWITCH_LONG_LIGHTS_SAGA } from '../../actions'
-import { NormalLights } from './Lights/normalLights'
-import { LongLights } from './Lights/longLights'
+import React from 'react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { SWITCH_ASIDE_SAGA, SWITCH_NORMAL_LIGHTS_SAGA, SWITCH_LONG_LIGHTS_SAGA } from '../../actions';
+import { NormalLights } from './Lights/normalLights';
+import { LongLights } from './Lights/longLights';
 
 const Container = styled.div`
     border:1px solid black;
@@ -18,7 +18,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     
-`
+`;
 const AssideOpener = styled.div`
     position: absolute;
     top: 5%;
@@ -30,7 +30,7 @@ const AssideOpener = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-`
+`;
 
 const ItemBox = styled.div`
     height:40px;
@@ -39,7 +39,7 @@ const ItemBox = styled.div`
     align-items:center;
     justify-content:center;
     cursor: pointer;
-`
+`;
 const Aside = ({
   isAside, switchMenu, switchNormalLights, isNormalLights, switchLongLights, isLongLights,
 }) => (
@@ -56,18 +56,18 @@ const Aside = ({
       />
     </ItemBox>
   </Container>
-)
+);
 
 const mapStateToProps = state => ({
   isAside: state.aside.isAside,
   isNormalLights: state.aside.normalLights,
   isLongLights: state.aside.longLights,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   switchMenu: () => dispatch({ type: SWITCH_ASIDE_SAGA }),
   switchNormalLights: () => dispatch({ type: SWITCH_NORMAL_LIGHTS_SAGA }),
   switchLongLights: () => dispatch({ type: SWITCH_LONG_LIGHTS_SAGA }),
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Aside)
+export default connect(mapStateToProps, mapDispatchToProps)(Aside);

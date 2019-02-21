@@ -1,24 +1,42 @@
-// engines sterings
-const Gpio = require('pigpio').Gpio;
 
-const forward = new Gpio(21, {mode: Gpio.OUTPUT});
-const backward = new Gpio(20, {mode: Gpio.OUTPUT});
-const pwaForward = new Gpio(16, {mode: Gpio.OUTPUT});
+const pigpio = require('pigpio');
 
-let dutyCycle = 0;
-forward.digitalWrite(1)
-setInterval(() => {
-  pwaForward.pwmWrite(dutyCycle);
+const { Gpio } = pigpio;
+const serwo = new Gpio(12, { mode: Gpio.OUTPUT });
+const forward = new Gpio(20, { mode: Gpio.OUTPUT });
+const backward = new Gpio(21, { mode: Gpio.OUTPUT });
 
-  dutyCycle += 5;
-  if (dutyCycle > 255) {
-    dutyCycle = 0;
+const servoMiddle = 1500;
+serwo.servoWrite(servoMiddle);
+forward.pwmFrequency(10);
+backward.pwmFrequency(10);
+
+const catchMove = ({ x = 0, y = 0 }) => {
+  if (x < -4) {
+    const countServo = servoMiddle + Math.ceil(-x / 5) * 60;
+
+    serwo.servoWrite(countServo < 500 ? 500 : countServo);
+  } else if (x > 4) {
+    const countServo = servoMiddle - Math.ceil(x / 5) * 60;
+
+    serwo.servoWrite(countServo > 2500 ? 2500 : countServo);
+  } else {
+    serwo.servoWrite(1500);
   }
-}, 20);
 
-const catchMove = ({x = 0,y = 0}) => {
-  console.log('x=' + x)
-  console.log('y=' + y)
-}
+  if (y > 0) {
+    const countPower = y * 5;
 
-module.exports.catchMove = catchMove
+    forward.pwmWrite(countPower);
+    backward.digitalWrite(0);
+  } else if (y < 0) {
+    const countPower = -y * 5;
+
+    forward.digitalWrite(0);
+    backward.pwmWrite(countPower);
+  } else {
+    forward.digitalWrite(0);
+    backward.digitalWrite(0);
+  }
+};
+module.exports.catchMove = catchMove;
