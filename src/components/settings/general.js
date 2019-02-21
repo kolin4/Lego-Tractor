@@ -1,17 +1,18 @@
-import React from 'react'
-import { Form, Field } from 'react-final-form'
-import styled from 'styled-components'
-import { connect } from 'react-redux'
-import { UPDATE_GENERAL_SETTINGS_SAGA } from '../../actions'
+import React from 'react';
+import { Form, Field } from 'react-final-form';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { UPDATE_GENERAL_SETTINGS_SAGA } from '../../actions';
 
 const Container = styled.div`
   padding: 1rem;
-`
+`;
+
 const RadioBox = styled.div`
   display:flex;
   flex-direction:column;
   margin-bottom:1rem;
-`
+`;
 
 const ButtonBox = styled.div`
   width:100%;
@@ -28,7 +29,8 @@ const ButtonBox = styled.div`
     border-radius:3px;
     cursor:pointer;
   }
-`
+`;
+
 const General = ({ gearbox, movement, updateGeneral }) => (
   <Container>
     <Form
@@ -95,14 +97,15 @@ const General = ({ gearbox, movement, updateGeneral }) => (
     }
     />
   </Container>
-)
+);
 
 const mapStateToProps = state => ({
   gearbox: state.settings.gearbox,
   movement: state.settings.movements,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   updateGeneral: values => dispatch({ type: UPDATE_GENERAL_SETTINGS_SAGA, payload: values }),
-})
-export default connect(mapStateToProps, mapDispatchToProps)(General)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(General);

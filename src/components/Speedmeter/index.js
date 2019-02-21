@@ -1,23 +1,29 @@
-import React from 'react'
-import styled from 'styled-components'
-import { connect } from 'react-redux'
+import React from 'react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 const Container = styled.div`
     height:40%;
     width:100%;
     display:flex;
     flex-direction:column;
-    border:1px solid black;
-`
+`;
+
 const Speedmeter = ({ position }) => (
   <Container>
-    <p>Position x ={position.x}</p>
+    <p>
+      Position x =
+      {position.x}
+    </p>
     <br />
-    <p>Position y ={position.y}</p>
+    <p>
+      Position y =
+      {position.y}
+    </p>
   </Container>
-)
+);
 
 const mapStateToProps = state => ({
   position: state.movement.position,
-})
-export default connect(mapStateToProps)(Speedmeter)
+});
+export default connect(mapStateToProps)(Speedmeter);
