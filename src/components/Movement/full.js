@@ -15,6 +15,7 @@ class Full extends React.Component {
       }
 
       this.props.updateMovement(position);
+      
     });
   }
 
