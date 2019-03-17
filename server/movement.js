@@ -11,19 +11,7 @@ serwo.servoWrite(servoMiddle);
 forward.pwmFrequency(10);
 backward.pwmFrequency(10);
 
-const catchMove = ({ x = 0, y = 0 }) => {
-  if (x < -4) {
-    const countServo = servoMiddle + Math.ceil(-x / 5) * 60;
-
-    serwo.servoWrite(countServo < 500 ? 500 : countServo);
-  } else if (x > 4) {
-    const countServo = servoMiddle - Math.ceil(x / 5) * 60;
-
-    serwo.servoWrite(countServo > 2500 ? 2500 : countServo);
-  } else {
-    serwo.servoWrite(1500);
-  }
-
+const catchMove = ({ y = 0 }) => {
   if (y > 0) {
     const countPower = y * 5;
 
@@ -39,4 +27,20 @@ const catchMove = ({ x = 0, y = 0 }) => {
     backward.digitalWrite(0);
   }
 };
+
+const catchSteering = ({ x }) => {
+  if (x < -4) {
+    const countServo = servoMiddle + Math.ceil(-x / 5) * 60;
+
+    serwo.servoWrite(countServo < 500 ? 500 : countServo);
+  } else if (x > 4) {
+    const countServo = servoMiddle - Math.ceil(x / 5) * 60;
+
+    serwo.servoWrite(countServo > 2500 ? 2500 : countServo);
+  } else {
+    serwo.servoWrite(1500);
+  }
+};
+
 module.exports.catchMove = catchMove;
+module.exports.catchSteering = catchSteering;
